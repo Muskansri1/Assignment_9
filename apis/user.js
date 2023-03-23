@@ -25,8 +25,9 @@ router.post('/create', async (req, res) => {
     const emailRegexp =
     /^[-!#$%&'*+\/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+\/0-9=?A-Z^_a-z`{|}~])*@[a-zA-Z0-9](-*\.?[a-zA-Z0-9])*\.[a-zA-Z](-?[a-zA-Z0-9])+$/;
 
-    const fullnameRegexp =
-    /^[a-zA-Z]+(\s[a-zA-Z]+)?$/;
+    // const fullnameRegexp = /^[a-zA-Z]+(\s[a-zA-Z]+)?$/;
+    const fullnameRegexp = /^([a-zA-Z]{5,}\s)?[a-zA-Z]+(\s[a-zA-Z]+)*$/;
+
 
     if (!fullnameRegexp.test(req.body.name)) {
         return res.status(400).send({
@@ -98,7 +99,7 @@ router.get('/getOne/:email', async (req, res) => {
 router.put('/edit/:email', async (req, res) => {
     try{
   
-          const fullnameRegexp = /^[a-zA-Z]+(\s[a-zA-Z]+)?$/;
+          const fullnameRegexp = /^([a-zA-Z]{5,}\s)?[a-zA-Z]+(\s[a-zA-Z]+)*$/;
           if (!fullnameRegexp.test(req.body.name)) {
             return res.status(400).send({
               message: "Please enter valid full name!",
