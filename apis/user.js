@@ -100,6 +100,13 @@ router.get('/getOne/:email', async (req, res) => {
 router.put('/edit/:email', async (req, res) => {
     try{
   
+
+      const user = await Model.findOne({email: req.params.email});
+      if (!user) {
+          return res.status(404).send({
+              message: "User not found",
+          });
+      }
           const fullnameRegexp = /^([a-zA-Z]{5,}\s)?[a-zA-Z]+(\s[a-zA-Z]+)*$/;
           if (!fullnameRegexp.test(req.body.name)) {
             return res.status(400).send({
