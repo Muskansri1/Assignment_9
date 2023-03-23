@@ -95,6 +95,7 @@ router.get('/getOne/:email', async (req, res) => {
     let userData = await Model.findOne({email: req.params.email});
     res.json(userData);
 })
+//PUT Request to Edit
 
 router.put('/edit/:email', async (req, res) => {
     try{
@@ -121,7 +122,7 @@ router.put('/edit/:email', async (req, res) => {
 
 if (req.body.email){
     return res.status(400).send({
-        message: "Can't update email",
+        message: "Email Cannot be Updated",
       });
 }
 
