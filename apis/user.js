@@ -18,7 +18,7 @@ router.post('/create', async (req, res) => {
   let userr = await Model.findOne({ email: req.body.email });
   if (userr) {
     return res.status(400).send({
-      message: "Duplicate User",
+      message: "This User Already Exists.",
     });
   }
 
@@ -41,9 +41,15 @@ router.post('/create', async (req, res) => {
     });
   }
 
-  if (passwordStrength(req.body.password).id < 1) {
+
+  if (req.body.password.length < 8) {
     return res.status(400).send({
-      message: "Weak Password, try again with a harder password",
+      message: "Password should be at least 8 characters long",
+    });
+  }
+  else if (!/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])/.test(req.body.password)) {
+    return res.status(400).send({
+      message: "Password should contain at least one lowercase letter, one uppercase letter, one number, and one symbol",
     });
   }
 
