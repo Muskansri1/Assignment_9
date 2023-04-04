@@ -68,3 +68,38 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+### Requirements:
+1. Connect your previous node assignment to this assignment. Create a login
+page. Use usernames and passwords created in last assignment to login
+successfully. You don’t have to create new user and password(sign up page).
+You can manually enter the data in backend and verify that with frontend(i.e.,
+Just create login page). Follow REST API folder hierarchy (Server.js should be
+entry, router.js, controller.js, service.js, model.js). Refer the folder structure in
+attached images.
+2. Create 4 pages using react components and react-router (Home, About-us,
+Jobs, Contact) as shown in the lab. Make sure to follow separate folder
+structure for every component.
+3. Add a card component on each page giving detail about each page. (Similar to
+the"complex_component_single.htm" example shown in the class and in
+folder react scripts uploaded in files). Use react map() to create dynamic
+component at least on one of the page.
+4. Feel free to use CSS and some additional text to make pages pretty.
+5. Upload the assignment on git. Add Readme and gitignore(add node modules
+in gitignore) and explain the assignment in readme properly. If readme and
+gitignore is missing points will be deducted.
+
+### Map Function used on the Job Page
+1. Inside the useEffect() hook, the map() function is used to transform the response.data array of users received from the API. For each user object in the array, a random age property is generated using Math.random() and Math.floor(), and then spread into the user object using the spread syntax ({ ...user, age }). The transformed user objects are then set to the users state using setUsers().
+
+2. Inside the return statement, the map() function is used again to dynamically render the job profiles. For each user object in the users array, a corresponding JSX element is rendered. The user.name, user.email, and user.age properties are accessed and displayed in the rendered JSX, using template literals and JSX syntax. The user._id property is also used as a key prop to uniquely identify each rendered element and optimize performance.
+
+### Requirements Explained 
+
+- The previous node assignment acts as a backend to this assignment. The frontend of the react application connects with the mongodb using the node server displayed in the backend.
+- The folder structure is followed as required.
+- All 4 pages are created as shown in the lab.
+- Card Component is added in each page.
+- React Map is used in the Job Page
+- Node Modules are removed and .gitignore file is added
